@@ -1,0 +1,5 @@
+s/ MA/, Massachusetts/g
+s/ PA/, Pennsylvania/g
+s/ VA/, Virginia/g
+s/ OK/, Oklahoma/g
+s/ CA/, California/g
