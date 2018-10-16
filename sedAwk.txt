@@ -1,51 +1,62 @@
-Dale Dougherty, Arnold Robbins-sed & awk-O'Reilly Media (1997)
-2.5 | 
 
-sed 's/ MA/, Massachusetts/g' l2.txt
+sed 's/ MA/, Massachusetts/g' l1.txt
 # Find and eplace MA with , Massachusetts
 # s/ substitute
 #  MA string literal to search for
 # , Massachusetts string to substitute
 # g/ global replace
 
-sed 's/ MA/, Massachusetts/g; s/ PA/, Pennsylvania/' l2.txt
+sed 's/ MA/, Massachusetts/g; s/ PA/, Pennsylvania/' l1.txt
 
-sed 's/ MA/, Massachusetts/g; s/ PA/, Pennsylvania/g; s/ VA/, Virginia/g; s/ OK/, Oklahoma/g; s/ CA/, California/g' l2.txt
+sed 's/ MA/, Massachusetts/g; s/ PA/, Pennsylvania/g; s/ VA/, Virginia/g; s/ OK/, Oklahoma/g; s/ CA/, California/g' l1.txt
 
 # ; links the commands together 
 
-sed -n -e 's/ MA/, Massachusetts/p' l2.txt
+sed -n -e 's/ MA/, Massachusetts/p' l1.txt
 # -n Suppress automatic output of input lines.
 # /p print command
 
-sed -f scriptFile l2.txt
+sed -f scriptFile l1.txt
 
 
-awk '{ print $2 }' l2.txt
+awk '{ print $2 }' l1.txt
 # print $2 refers to the value of the second field on each input line
 
-awk '{ print $0 }' l2.txt
+awk '{ print $0 }' l1.txt
 # print $0 prints the entire file
 
-awk '/MA/' l2.txt
+awk '/MA/' l1.txt
 # /MA/ prints all the lines with MA in it
 
-awk '/MA/ { print $1 } ' l2.txt
+awk '/MA/ { print $1 } ' l1.txt
 # /MA/ finds all the lines with MA in it
 # print $1 print statement to limit the output to the first field of each record
 
-awk -F, '/MA/ { print $1 } ' l2.txt
+awk -F, '/MA/ { print $1 } ' l1.txt
 # -F option to change the field separator to a comma
 # print $1 print statement to limit the output to the first field of each record seperated by a comma
 
-awk -F, '{ print $1; print $2; print $3 }' l2.txt 
+awk -F, '{ print $1; print $2; print $3 }' l1.txt 
 # -F option to change the field separator to a comma
 # ; Multiple commands are separated by semicolons
 
-sed -f scriptFile  l2.txt | awk -F, '{ print $4 }'
+sed -f scriptFile  l1.txt | awk -F, '{ print $4 }'
 # -f add the contents of script-file to the commands to be executed
 # -F, option to change the field separator to a comma
 # print $4 print statement to limit the output to the forth field of each record
+
+sed -f scriptFile  l1.txt | awk -F, '{ print $4 }' | sort
+# sort piping to sort aranges the output alphabetically 
+
+sed -f scriptFile  l1.txt | awk -F, '{ print $4 }' | sort | uniq
+# uniq only displays results that are not repeats
+
+sed -f scriptFile  l1.txt | awk -F, '{ print $4 }' | sort | uniq -c
+# uniq -c counts the occurance of each state
+
+
+sed -f scriptFile  l1.txt | awk -F, '{ print $4 ", " $0 }'
+
 
 ] LINKS [
 https://www.cyberciti.biz/faq/how-to-use-sed-to-find-and-replace-text-in-files-in-linux-unix-shell/
