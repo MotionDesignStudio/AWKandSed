@@ -62,6 +62,9 @@ sed -f scriptFile l1.txt | ./e1.sh
 
 sed -f scriptFile  l1.txt | awk -F, '{ print $4 ", " $0 }'
 
+grep "can[ no']*t" l2.txt
+# * The ability to match "zero or more" of something is known by the technical term "closure."
+
 
 ] LINKS [
 https://www.poftut.com/awk-if-if-else-else-statement-or-conditional-statements/
