@@ -5,10 +5,14 @@ awk -F, '{
 }' $* |
 sort |
 awk -F, '
-$1 == LastState {
-	print "\t" $2
+{
+	if ($1==LastState){
+		print "\t" $2
+	}
+	else {
+		LastState = $1
+		print $1
+		print "\t" $2
+	}
 }
-$1 != LastState {
-	LastState = $1
-	print $1
-}'
+'

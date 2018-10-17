@@ -1,3 +1,4 @@
+3.2.3
 
 sed 's/ MA/, Massachusetts/g' l1.txt
 # Find and eplace MA with , Massachusetts
@@ -55,10 +56,15 @@ sed -f scriptFile  l1.txt | awk -F, '{ print $4 }' | sort | uniq -c
 # uniq -c counts the occurance of each state
 
 
+sed -f scriptFile l1.txt | ./e1.sh
+
+
+
 sed -f scriptFile  l1.txt | awk -F, '{ print $4 ", " $0 }'
 
 
 ] LINKS [
+https://www.poftut.com/awk-if-if-else-else-statement-or-conditional-statements/
 https://www.cyberciti.biz/faq/how-to-use-sed-to-find-and-replace-text-in-files-in-linux-unix-shell/
 
 
