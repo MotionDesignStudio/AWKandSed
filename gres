@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# Check if three aruments were passed
+if [ $# -lt "3" ]
+then
+	echo Usage : gres pattern replacemnt file
+	exit 1
+fi
+
+pattern=$1
+replacement=$2
+
+# check is the third argument is a file
+if [ -f $3 ]
+then
+	file=$3
+else
+	echo $3 is not a file.
+	exit 1
+fi
+
+#A="`echo | tr '\012' '\001' `"
+#echo Executing :: $A$pattern$A$replacement$A
+#echo Executing "s$A$pattern$A$replacement$A"
+#sed -e "s$A$pattern$A$replacement$A" $file
+sed -e "s/$pattern/$replacement/g" $file
