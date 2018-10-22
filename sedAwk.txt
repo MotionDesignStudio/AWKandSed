@@ -1,4 +1,4 @@
-5.2
+5.11
 
 
 sed 's/ MA/, Massachusetts/g' l1.txt
@@ -105,8 +105,70 @@ sed -n '1,3p' l1.txt
 # 1,3p print 1st line to the 3rd
 
 sed 's/^$/.LP/' horseF.txt
+# ^$ find anyline that is empty
+# .LP is the string literal being replace.  The dot does not need to be escape when in the replacement section
+
+sed 's/,/ SECOND COMMA/2' l1.txt
+# 
+
+sed -f e3 l1.txt 
+# Formats the address on three lines
+
+sed -f e5 l1.txt
+# Format only address that have VA in them.
+
+echo Regex as a variable | sed 's/as a/(&)/'
+# as a << is the string literal
+# ( ) will go around the found values stored in the regex variable
+# & stores the value found in the regex
+
+sed 's/\([[:alpha:]]* [[:alpha:]]*\), \([[:digit:]]\{1,\}\)/\2, \1,/' l1.txt
+# switching names with number of the address
+
+sed 's/\([[:alpha]]*\)/X\2X/' l1.txt
+
+echo "first:last" | sed 's/\(.*\):\(.*\)/\2:\1/'
+
+sed '/Hubert Sims/i\INSERTING BEFORE Hubert\' l1.txt
+# Hubert Sims string literal to search for
+# i\ insert before the following after Hibert Sims
+# INSERTING AFTER Hubert << string literal to insert before 
+
+sed '/Hubert Sims/a\INSERTING AFTER Hubert\' l1.txt
+# Hubert Sims string literal to search for
+# a\ append the following after Hibert Sims
+# INSERTING AFTER Hubert << string literal to append
+
+
+sed '/^Hubert/,/Mountain View CA$/c\
+TWO LINES \
+REMOVED' l1.txt
+# Change command example accepts a range of lines
+# ^ line starts with
+# Hubert string literal to search for
+# , separator for the range
+# / start of the ending range declaration
+# Mountain View CA << string literal
+# $ end of line
+# / end of the ending range declaration
+# c\ change command
+# TWO LINES first lines of string literal to replace
+# \ line break
+# REMOVED second line of string literal to replace
+
+
+sed 'y/abcdefghijklmnopqrstuv/ABCDEFGHIJKLMNOPQRSTUV/' l1.txt
+# transform command example
+# y delcares transform
+# abc... are treated as seperate characters
+# ABC... are matched exactly with whatever is in the same location and replaced it 
+
+sed '/.*/!d;=' l1.txt | sed 'N;s/\n/:/'
+# Print Line Number
+
 
 ] LINKS [
+http://gilmation.com/articles/regexp-keeping-parts-of-a-pattern-in-sed/
 https://www.commandlinefu.com/commands/view/10163/remove-a-range-of-lines-from-a-file
 https://www.poftut.com/awk-if-if-else-else-statement-or-conditional-statements/
 https://www.cyberciti.biz/faq/how-to-use-sed-to-find-and-replace-text-in-files-in-linux-unix-shell/
