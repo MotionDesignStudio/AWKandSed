@@ -166,6 +166,19 @@ sed 'y/abcdefghijklmnopqrstuv/ABCDEFGHIJKLMNOPQRSTUV/' l1.txt
 sed '/.*/!d;=' l1.txt | sed 'N;s/\n/:/'
 # Print Line Number
 
+sed '/^Amy/r l2.txt' l1.txt
+# Find this in one file and insert the content of another file there
+# ^ start with
+# Amy string literal
+# r "The read command reads the contents of file into the pattern space after the addressed line." ~ Dale Dougherty, Arnold Robbins-sed & awk
+# l2.txt is the file we are search for the pattern in
+# l1.txt is the file contents we will use whne we find the pattern "Amy" in l2.txt
+
+sed '/VA$/w VAAddresses.txt' l1.txt
+# VA string literal we are searching for
+# $ check if string literal is at the end of the line
+# w write command, will open or create a file and replace all contents with new
+
 
 ] LINKS [
 http://gilmation.com/articles/regexp-keeping-parts-of-a-pattern-in-sed/
