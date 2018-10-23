@@ -181,6 +181,7 @@ sed '/VA$/w VAAddresses.txt' l1.txt
 
 
 ] LINKS [
+https://likegeeks.com/sed-linux/#Read-DataFrom-a-File
 http://gilmation.com/articles/regexp-keeping-parts-of-a-pattern-in-sed/
 https://www.commandlinefu.com/commands/view/10163/remove-a-range-of-lines-from-a-file
 https://www.poftut.com/awk-if-if-else-else-statement-or-conditional-statements/
