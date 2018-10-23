@@ -1,6 +1,5 @@
-/VA/{
-s/, /\
-/1
-s/, /\
-/1
+# This will search for all the lines that end with VA and remove the VA and write the output to the file VAAddressesNOVA.txt
+/VA$/{
+s///
+w VAAddressesNOVA.txt
 }

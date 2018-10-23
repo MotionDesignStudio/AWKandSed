@@ -1,4 +1,4 @@
-5.11
+5.11.1 Checking Out Reference Pages
 
 
 sed 's/ MA/, Massachusetts/g' l1.txt
@@ -179,6 +179,9 @@ sed '/VA$/w VAAddresses.txt' l1.txt
 # $ check if string literal is at the end of the line
 # w write command, will open or create a file and replace all contents with new
 
+
+sed -f e5 l1.txt
+# This will search for all the lines that end with VA and remove the VA and write the output to the file VAAddressesNOVA.txt
 
 ] LINKS [
 https://likegeeks.com/sed-linux/#Read-DataFrom-a-File
