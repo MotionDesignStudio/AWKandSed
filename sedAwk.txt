@@ -1,4 +1,4 @@
-5.11.1 Checking Out Reference Pages
+6. Advanced sed Commands
 
 
 sed 's/ MA/, Massachusetts/g' l1.txt
@@ -182,6 +182,10 @@ sed '/VA$/w VAAddresses.txt' l1.txt
 
 sed -f e5 l1.txt
 # This will search for all the lines that end with VA and remove the VA and write the output to the file VAAddressesNOVA.txt
+
+
+echo "One two 333 three four five 666 six seven" | sed -n '/\(\w\)/\1/p'
+
 
 ] LINKS [
 https://likegeeks.com/sed-linux/#Read-DataFrom-a-File
