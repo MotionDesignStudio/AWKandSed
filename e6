@@ -1,0 +1,6 @@
+# This will search over multiple lines
+/Tulsa OK$/{
+N
+s/Tulsa OK\nTerry Kalkas, /MULTIPLE LINE SEARCH\
+/
+}

@@ -1,4 +1,4 @@
-6. Advanced sed Commands
+6.1.1.1 Converting an Interleaf file
 
 
 sed 's/ MA/, Massachusetts/g' l1.txt
@@ -185,6 +185,8 @@ sed -f e5 l1.txt
 
 
 echo "One two 333 three four five 666 six seven" | sed -n '/\(\w\)/\1/p'
+
+sed -f e6 l1.txt
 
 
 ] LINKS [
