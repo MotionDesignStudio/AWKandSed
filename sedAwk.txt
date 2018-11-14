@@ -188,6 +188,7 @@ echo "One two 333 three four five 666 six seven" | sed -n '/\(\w\)/\1/p'
 
 sed -f e6 l1.txt
 
+sed -f e8 e8ex
 
 ] LINKS [
 https://likegeeks.com/sed-linux/#Read-DataFrom-a-File
