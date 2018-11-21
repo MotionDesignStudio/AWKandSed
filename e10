@@ -1,0 +1,5 @@
+# This reduces mulitple blank lines to one using D command
+/^$/{
+N
+/^\n$/D
+}

@@ -190,6 +190,55 @@ sed -f e6 l1.txt
 
 sed -f e8 e8ex
 
+
+sed -n '/[^[:space:]]/p' e7ex
+# Retreive all lines not empty
+# -n supress default print behavior
+# ^ negate the match, that is everything but what I am searching for
+# [[:space:]] is a chracter class for any white or empty space
+
+
+sed 's/[^[:space:]]/\n&/g' l1.txt
+
+sed 's/[^[:space:]]/\
+&/' l1.txt
+
+sed 's/\([^[:space:]]\)/\n\1/' l1.txt
+# Single space
+
+sed 's/\([^[:space:]]\)/\n\n\1/' l1.txt
+# Double space
+# \(  \) will store the found pattern in a array you aces like this \1 being the first found pattern in the array
+# [^[:space:]] any non white space.  The ^ makes it match non white space
+# \n line break
+# \n line break
+# \1 the first found pattern stored in a variable
+
+
+sed -E 's/(([^ ]+ ){3}).*/\1/' l1.txt
+# Print the first three words of a line
+
+sed -E 's/(([^ ]+ ){3}$)/\1/' 1TO3.txt
+
+sed -E '^([a-z]+)[,\s]+([a-z]+)$' 1TO3.txt
+
+sed -En 's/^([a-z]+)[,\s]+([a-z]+)$/p' t
+
+sed -En 's/^\w+[,\s]+\w+$/p' t
+
+sed '/ [^ ][^ ]* /d;/ /!d' 1TO3.txt
+
+sed -En '/^[[:alpha:]]+(\s|,\s)[[:alpha:]]+$/p' t
+
+sed -En '/^\w+(\s|,\s)\w+$/p' t
+
+
+sed -En '/^[^a-z\n_—-]*[a-z_—-]+[^a-z\n_—-]+[a-z_—-]+[^a-z\n_—-]*$/p' t
+
+sed -En '/^[^a-z\n_—-]*[a-z_—-]+$/p' t
+
+sed -f e12 e12ex
+
 ] LINKS [
 https://likegeeks.com/sed-linux/#Read-DataFrom-a-File
 http://gilmation.com/articles/regexp-keeping-parts-of-a-pattern-in-sed/

@@ -1,0 +1,8 @@
+# The object is to reverse the order of the lines beginning with 1 and the lines beginning with 2. 
+/1/{
+h
+d
+}
+/2/{
+G
+}
