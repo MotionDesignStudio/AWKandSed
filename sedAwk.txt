@@ -1,4 +1,4 @@
-6.1.1.1 Converting an Interleaf file
+7.5.1 Referencing and Separating Fields
 
 
 sed 's/ MA/, Massachusetts/g' l1.txt
@@ -238,6 +238,23 @@ sed -En '/^[^a-z\n_—-]*[a-z_—-]+[^a-z\n_—-]+[a-z_—-]+[^a-z\n_—-]*$/p' 
 sed -En '/^[^a-z\n_—-]*[a-z_—-]+$/p' t
 
 sed -f e12 e12ex
+
+sed -f e13 e13ex
+
+awk -f a1 a1ex
+
+awk -f a2 a2ex
+
+awk '{ print $1,", " $6, $7 }' l1.txt
+
+echo a b c d | awk 'BEGIN { one = 1; two = 2 } {print $(one + two) }'
+
+awk -F"," '{ print $2 }' l1.txt
+
+
+
+
+
 
 ] LINKS [
 https://likegeeks.com/sed-linux/#Read-DataFrom-a-File
