@@ -1,0 +1,9 @@
+# Dispplay all the name of people living in MA
+BEGIN { FS ="," }
+$3 !~ /MA/{
+print "Not from MA :" $1
+}
+
+$3 ~ /MA/ {
+print "From MA : " $1 
+}

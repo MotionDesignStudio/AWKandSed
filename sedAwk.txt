@@ -251,8 +251,23 @@ echo a b c d | awk 'BEGIN { one = 1; two = 2 } {print $(one + two) }'
 
 awk -F"," '{ print $2 }' l1.txt
 
+# -F set the delimiter
+# "," set the delimiter to a comma
+# '' encases the awk command
+# print out the contents of variable $2
+# $2 stores what is after the second comma before the third comma or end of the line
+# l1.txt is the we are going to use 
 
 
+echo 111-222-3333 | awk -F"-" '{ print $3 }'
+
+awk -f a3 l1.txt
+
+awk -f a4 l1.txt
+
+awk -f a5 l1.txt
+
+awk -f a6 l1.txt
 
 
 

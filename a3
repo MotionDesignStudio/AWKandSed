@@ -1,0 +1,8 @@
+# This will format the address in a block format
+# input info example : John Daggett, 341 King Road, Plymouth MA
+BEGIN { FS = "," } # This sets the field seprator to a comma
+{ print "" #prints a blank line
+print $1
+print $2
+print $3
+}

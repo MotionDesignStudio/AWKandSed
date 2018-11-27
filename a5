@@ -1,0 +1,5 @@
+# Dispplay all the name of people living in MA
+BEGIN { FS ="," }
+$3 ~ /MA/{
+print $1
+}
