@@ -1,0 +1,7 @@
+# Count blank lines.
+/^$/ {
+	++x
+}
+END {
+	print "This file contain(s) this many blank lines : " x 
+}

@@ -269,6 +269,8 @@ awk -f a5 l1.txt
 
 awk -f a6 l1.txt
 
+awk -f a9 a2ex
+
 
 
 ] LINKS [

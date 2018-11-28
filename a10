@@ -1,0 +1,7 @@
+# average five grades
+/[^#]/{ 
+	total = $2 + $3 + $4 + $5 + $6
+	avg = total / 5
+	if ($1 != "x")
+		print $1, avg
+}

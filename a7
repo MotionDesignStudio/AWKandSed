@@ -1,0 +1,5 @@
+# Regular expression demonstrating multiple selector
+BEGIN { FS ="[,;]" }
+{
+print $4
+}
