@@ -1,0 +1,20 @@
+# average grades
+/[^#]/{ 
+	x=1
+	howManyNumbers=0
+	mySum=0
+	while (x<NF){ # loop over all the content(s) in the delimiter
+		x++
+		if ( $x~/^[0-9]+$/ ) {
+			howManyNumbers++
+			mySum+= $x
+		}
+	
+	}
+
+	print $1 " :: Average is :: "  mySum/howManyNumbers
+}
+
+END{
+	print NR, "records processed."
+}

@@ -1,0 +1,15 @@
+# print first and last field
+
+# FS="\n" FS means field seperator.  This sets it to a new lines with \n
+# RS="" RS means record seperator.  This sets it to an empty string which stands for blank line
+# OFS=" | " OFS means output field seperator.  This sets it to an empty string which stands for blank line
+# ORS="\n\n" ORS means output record seperator.  This sets it to two blank lines
+BEGIN { 
+	FS="\n"
+	RS=""
+	OFS=" | "
+	ORS="\n\n"
+	}
+{ 
+	print $1, $NF
+}

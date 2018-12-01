@@ -1,4 +1,4 @@
-7.5.1 Referencing and Separating Fields
+7.8 Referencing and Separating Fields
 
 
 sed 's/ MA/, Massachusetts/g' l1.txt
@@ -271,6 +271,13 @@ awk -f a6 l1.txt
 
 awk -f a9 a2ex
 
+awk -f a10 a10ex
+
+awk -f a11 a11ex
+
+awk -f a12 a12ex
+
+awk -f a13 a13ex
 
 
 ] LINKS [
