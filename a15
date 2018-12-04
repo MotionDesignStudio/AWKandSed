@@ -1,0 +1,14 @@
+# print file size and name
+
+ls -l $* | awk '{
+	print $5, "\t", $9
+}
+
+{
+	sum += $5
+	++filenum
+}
+END {
+	print "SIZE : " sum, "\t", "NUMBER OF FILE(S) : ", filenum
+}
+'

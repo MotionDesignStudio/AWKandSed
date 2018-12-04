@@ -279,6 +279,12 @@ awk -f a12 a12ex
 
 awk -f a13 a13ex
 
+ps aux | awk '{ print $3 " " $2 " " $11 }' | sort
+# This displays sorted cpu usage and all tasks
+
+awk -f a14 a11ex
+
+./a15 a*
 
 ] LINKS [
 https://likegeeks.com/sed-linux/#Read-DataFrom-a-File

@@ -1,0 +1,11 @@
+# print first and last field
+
+# FS="[ ]+" FS means field seperator.  This sets it to a 1 or infinite amount of blank space with [ ]+
+BEGIN { 
+	FS="[ ]+"
+	}
+	
+# NF check number of fields and I specified 4
+NF == 5 {
+	print $1 " has four grades. >> " $0
+}
