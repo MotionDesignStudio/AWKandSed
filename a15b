@@ -1,0 +1,52 @@
+# print file size and name
+
+ls -lR $* | awk '
+BEGIN {
+	print "DIRECTORY", "\t\t", "BYTES"
+	counter4dir=-1 # Not necessary but setting value so array starts at 0
+	couter4output=-1
+	bytesSum=0
+}
+
+
+
+
+{
+	
+	if ( $1 ~ /^\..*:$/ ) {
+		counter4dir++
+		#print "THIS : ", $1 
+		arrayDirectoryNames[counter4dir]= $1
+		#print "counter4dir : ", counter4dir
+		# Resetting the value of bytesSum for each directory
+		bytesSum = 0
+	}
+	
+	if ( $1 ~ /^-/ ) {
+		bytesSum += $5
+		arrayFileSizes[counter4dir]= bytesSum
+		#print "bytesSum : ", arrayFileSizes[counter4dir]
+	}
+}
+
+# This fucntion counts the number of element in an array
+function countArrayElements(myArray){
+	for ( e in myArray) {
+		c++
+	}
+	return c
+}
+	
+END {
+
+
+	#print "TOTAl : ", sum, "bytes (" filenum " files)"
+	for ( i in arrayDirectoryNames ){
+		couter4output++
+		print arrayDirectoryNames[couter4output], "\t\t", arrayFileSizes[couter4output]
+	}
+	
+	#print "Length : ", countArrayElements(arrayFileSizes)
+	#print "TEST :", arrayFileSizes[2]
+}
+'

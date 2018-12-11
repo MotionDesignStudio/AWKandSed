@@ -1,19 +1,30 @@
 # print file size and name
 
-ls -l $* | awk '
+ls -lR $* | awk '
 BEGIN {
 	print "BYTES", "\t", "FILE"
 }
 
-{
+# Test for 9 fields; files begin with "-"
+NF == 9 && /^-/{
+	sum += $5 # sum of file sizes
+	++filenum # sum number of files
 	#print $5, "\t", $9
+	# Below was added to help capture the entire file name
 	print $5, "\t", substr($0, index($0,$9))
 }
 
-{
-	sum += $5
-	++filenum
+# Checks for directories
+NF == 9 && /^d/{
+	print "<dir>", "\t", $9 # prints <dir> and name
+}	
+	
+# Test for ls -lR line example : /dir:
+$1 ~ /^\..*:$/ {
+	print "\t" $0 # prints that line preceded by tab
 }
+
+	
 END {
 	print "TOTAl : ", sum, "bytes (" filenum " files)"
 }
