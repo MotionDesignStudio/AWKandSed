@@ -2,9 +2,11 @@
 
 ls -lR $* | awk '
 BEGIN {
-	print "DIRECTORY", "\t\t", "BYTES"
+	#print "BYTES", "\t\t\t", "#FILES", "\t\t\t", "DIRECTORY"
+	printf "%-20s %-20s %-20s\n", "BYTES", "#FILES", "DIRECTORY"
 	counter4dir=-1 # Not necessary but setting value so array starts at 0
 	couter4output=-1
+	numberFilesEachDirectory=0
 	bytesSum=0
 }
 
@@ -20,12 +22,16 @@ BEGIN {
 		#print "counter4dir : ", counter4dir
 		# Resetting the value of bytesSum for each directory
 		bytesSum = 0
+		numberFilesEachDirectory=0
 	}
 	
 	if ( $1 ~ /^-/ ) {
 		bytesSum += $5
 		arrayFileSizes[counter4dir]= bytesSum
 		#print "bytesSum : ", arrayFileSizes[counter4dir]
+		numberFilesEachDirectory++
+		arrayNumFiles[counter4dir]= numberFilesEachDirectory
+		#print "numberFilesEachDirectory :", numberFilesEachDirectory
 	}
 }
 
@@ -37,14 +43,35 @@ function countArrayElements(myArray){
 	return c
 }
 	
+
+# Function convert bytes to other formats
+function convertBytes (convertMe, baseUnit) {
+	#return convertMe % baseUnit
+	if ( convertMe < baseUnit ){
+		return convertMe
+	}else{
+		numberMiB = convertMe / baseUnit
+		#return convertMe % baseUnit
+		return numberMiB
+	}
+}
+
+	
 END {
 
 
 	#print "TOTAl : ", sum, "bytes (" filenum " files)"
 	for ( i in arrayDirectoryNames ){
 		couter4output++
-		print arrayDirectoryNames[couter4output], "\t\t", arrayFileSizes[couter4output]
+		#print arrayFileSizes[couter4output], "\t\t\t", arrayNumFiles[couter4output], "\t\t\t", arrayDirectoryNames[couter4output]
+		printf "%-20d %-20d %-20s\n", arrayFileSizes[couter4output], arrayNumFiles[couter4output], arrayDirectoryNames[couter4output]
 	}
+	
+	
+	print convertBytes(5178959, 1048576)
+	#print convertBytes(20, 20)
+	
+	#printf "%-10s \n", arrayFileSizes[1]
 	
 	#print "Length : ", countArrayElements(arrayFileSizes)
 	#print "TEST :", arrayFileSizes[2]
