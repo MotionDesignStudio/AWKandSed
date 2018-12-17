@@ -286,8 +286,16 @@ awk -f a14 a11ex
 
 ./a15 a*
 
+1024 bytes = 1 kibibyte (KiB) 1024 ^ 1
+1048576 bytes = 1 mebibytes (MiB) 1024 ^ 2 
+1073741824 bytes = 1 gibibyte (GiB) 1024 ^ 3
+1099511627800 bytes = 1 tebibyte (TiB) 1024 ^ 4
 
-1048576 bytes = 1 mebibytes (MiB)
+	split("0 1024 1048576 1073741824 1099511627800", arrayUnits )
+	split("bytes KiB MiB GiB TiB", arrayLabels )
+				
+
+1024 MiB = 1 gibibyte (1 Gib)
 125000000 bytes = 1 gigabits (Gb)
 119.2093 Mebibytes (MiB) = 1 gigabits (Gb)
 1073741824 bytes = 1 gigabits (Gb)
@@ -296,6 +304,9 @@ awk -f a14 a11ex
 7.8 MiB (8,204,128 bytes)
 
 ] LINKS [
+https://unix.stackexchange.com/questions/57006/awk-high-precision-arithmetic
+http://extraconversion.com/data-storage/gigabits/gigabits-to-bytes.html
+https://www.tutorialspoint.com/awk/awk_ternary_operators.htm
 https://stackoverflow.com/questions/14063783/how-to-initialize-an-array-of-arrays-in-awk
 https://stackoverflow.com/questions/8009664/how-to-split-a-delimited-string-into-an-array-in-awk
 https://likegeeks.com/sed-linux/#Read-DataFrom-a-File
