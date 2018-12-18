@@ -13,13 +13,13 @@ BEGIN {
 	#split("0 1024 1048576 1073741824 1099511627776 1125899906842624 1152921504606846976", arrayUnits )
 	
 	arrayUnits[1]=0
-	for ( counter = 2; counter < 9; counter++ ) {
+	for ( counter = 2; counter < 11; counter++ ) {
 		# For the arrays to be aligned I must start counter a 2 and subtract one from it for the exponent
 		arrayUnits[counter]=1024 ^ (counter-1)
 	}
 	
 	# Declare aray with units labels
-	split("bytes KiB MiB GiB TiB PiB EiB", arrayLabels )
+	split("bytes KiB MiB GiB TiB PiB EiB ZiB YiB", arrayLabels )
 		
 	unitsLength = countArrayElements(arrayUnits)
 }
@@ -79,7 +79,7 @@ END {
 		printf "%-20s %-20d %-20s\n",  convertBytes( arrayFileSizes[couter4output], arrayUnits, unitsLength, arrayLabels), arrayNumFiles[couter4output], arrayDirectoryNames[couter4output]
 	}
 	
-	#printf "%-20s %-20d %-20s\n",  convertBytes( 1152921504606846976, arrayUnits, unitsLength, arrayLabels), arrayNumFiles[0], arrayDirectoryNames[0]
+	printf "%-20s %-20d %-20s\n",  convertBytes( 1152921504606846976, arrayUnits, unitsLength, arrayLabels), arrayNumFiles[0], arrayDirectoryNames[0]
 	
 }
 '
