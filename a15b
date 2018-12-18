@@ -10,13 +10,18 @@ BEGIN {
 	bytesSum=0
 	
 	# Declare aray with units
-	split("0 1024 1048576 1073741824 1099511627800 1125899906842624 1152921504606846976", arrayUnits )
+	#split("0 1024 1048576 1073741824 1099511627776 1125899906842624 1152921504606846976", arrayUnits )
+	
+	arrayUnits[1]=0
+	for ( counter = 2; counter < 9; counter++ ) {
+		# For the arrays to be aligned I must start counter a 2 and subtract one from it for the exponent
+		arrayUnits[counter]=1024 ^ (counter-1)
+	}
 	
 	# Declare aray with units labels
 	split("bytes KiB MiB GiB TiB PiB EiB", arrayLabels )
-	
+		
 	unitsLength = countArrayElements(arrayUnits)
-
 }
 
 {
@@ -39,6 +44,8 @@ BEGIN {
 
 # This fucntion counts the number of element in an array
 function countArrayElements(myArray){
+	# c must be zeroed out or it will store values from previous calls
+	c=0
 	for ( e in myArray) {
 		c++
 	}
@@ -49,8 +56,8 @@ function countArrayElements(myArray){
 # Function convert bytes to other formats
 
 function convertBytes (convertMe, arrayUnitsII, unitsLengthII, arrayLabelsII ) {
-		
-	for ( counter = 1; counter < unitsLengthII; counter++ ) {
+
+	for ( counter = 0; counter < unitsLengthII; counter++ ) {
 		
 		if ( convertMe >= arrayUnitsII[counter] && convertMe < arrayUnitsII[counter+1] ){
 
@@ -71,6 +78,8 @@ END {
 		couter4output++
 		printf "%-20s %-20d %-20s\n",  convertBytes( arrayFileSizes[couter4output], arrayUnits, unitsLength, arrayLabels), arrayNumFiles[couter4output], arrayDirectoryNames[couter4output]
 	}
+	
+	#printf "%-20s %-20d %-20s\n",  convertBytes( 1152921504606846976, arrayUnits, unitsLength, arrayLabels), arrayNumFiles[0], arrayDirectoryNames[0]
 	
 }
 '
