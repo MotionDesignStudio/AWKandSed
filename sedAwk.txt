@@ -304,6 +304,7 @@ awk -f a14 a11ex
 7.8 MiB (8,204,128 bytes)
 
 ] LINKS [
+https://stackoverflow.com/questions/9985528/how-can-i-trim-white-space-from-a-variable-in-awk
 https://unix.stackexchange.com/questions/57006/awk-high-precision-arithmetic
 http://extraconversion.com/data-storage/gigabits/gigabits-to-bytes.html
 https://www.tutorialspoint.com/awk/awk_ternary_operators.htm
