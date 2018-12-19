@@ -286,24 +286,11 @@ awk -f a14 a11ex
 
 ./a15 a*
 
-1024 bytes = 1 kibibyte (KiB) 1024 ^ 1
-1048576 bytes = 1 mebibytes (MiB) 1024 ^ 2 
-1073741824 bytes = 1 gibibyte (GiB) 1024 ^ 3
-1099511627800 bytes = 1 tebibyte (TiB) 1024 ^ 4
-
-	split("0 1024 1048576 1073741824 1099511627800", arrayUnits )
-	split("bytes KiB MiB GiB TiB", arrayLabels )
-				
-
-1024 MiB = 1 gibibyte (1 Gib)
-125000000 bytes = 1 gigabits (Gb)
-119.2093 Mebibytes (MiB) = 1 gigabits (Gb)
-1073741824 bytes = 1 gigabits (Gb)
-
-
-7.8 MiB (8,204,128 bytes)
+This will provide the bytes size for all the files and number of files in each directory.
+./a15b
 
 ] LINKS [
+https://unix.stackexchange.com/questions/126011/sorting-by-last-name-in-the-scond-column
 https://stackoverflow.com/questions/9985528/how-can-i-trim-white-space-from-a-variable-in-awk
 https://unix.stackexchange.com/questions/57006/awk-high-precision-arithmetic
 http://extraconversion.com/data-storage/gigabits/gigabits-to-bytes.html
