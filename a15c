@@ -3,15 +3,17 @@
 ls -lR $* | awk '
 
 BEGIN {
+
 	printf "%-20s %-20s %-20s\n", "SIZE", "#FILES", "DIRECTORY"
 	counter4dir=-1 # Not necessary but setting value so array starts at 0
 	couter4output=-1
 	numberFilesEachDirectory=0
 	bytesSum=0
 	
-	# Declare array with units
+	# FOR DEBUGGING Declare array with units
 	#split("0 1024 1048576 1073741824 1099511627776 1125899906842624 1152921504606846976", arrayUnits )
 	
+	# Declare array with units
 	arrayUnits[1]=0
 	for ( counter = 2; counter < 11; counter++ ) {
 		# For the arrays to be aligned I must start counter a 2 and subtract one from it for the exponent
@@ -75,31 +77,24 @@ function convertBytes (convertMe, arrayUnitsII, unitsLengthII, arrayLabelsII ) {
 END {
 
 	for ( i in arrayDirectoryNames ){
-		couter4output++
-		outputArray[1] = convertBytes( arrayFileSizes[couter4output], arrayUnits, unitsLength, arrayLabels) arrayNumFiles[couter4output] arrayDirectoryNames[couter4output]
+		couter4output++ 
 		
-		#print "couter4output :", couter4output
-		#printf "%-20s %-20d %-20s\n",  convertBytes( arrayFileSizes[couter4output], arrayUnits, unitsLength, arrayLabels), arrayNumFiles[couter4output], arrayDirectoryNames[couter4output]
+		if ( ENVIRON["srt"] =="s" )
+			# Sort by file size
+			printf "%-1d %-20s %-20d %-20s\n",  arrayFileSizes[couter4output], convertBytes( arrayFileSizes[couter4output], arrayUnits, unitsLength, arrayLabels), arrayNumFiles[couter4output], arrayDirectoryNames[couter4output]  | "sort -nk1,1n | cut -d\\  -f2-" 
+		else if ( ENVIRON["srt"] =="f" ) 
+			# Sort by number files
+			printf "%-1d %-20s %-20d %-20s\n",  arrayFileSizes[couter4output], convertBytes( arrayFileSizes[couter4output], arrayUnits, unitsLength, arrayLabels), arrayNumFiles[couter4output], arrayDirectoryNames[couter4output]  | "sort -nk4,4n | cut -d\\  -f2-"  
+		else if ( ENVIRON["srt"] =="d" ) 
+			# Sort by directory name
+			printf "%-1d %-20s %-20d %-20s\n",  arrayFileSizes[couter4output], convertBytes( arrayFileSizes[couter4output], arrayUnits, unitsLength, arrayLabels), arrayNumFiles[couter4output], arrayDirectoryNames[couter4output]  | "sort -nk5 | cut -d\\  -f2-" 
+		
+		
 	}
 	
+	# FOR DEBUGGING
 	#printf "%-20s %-20d %-20s\n",  convertBytes( 1152921504606846976, arrayUnits, unitsLength, arrayLabels), arrayNumFiles[0], arrayDirectoryNames[0]
 	
-	tmpArry[0]="33 lex"
-	tmpArry[1]="3 zex"
-	tmpArry[2]="39 aex"
-	tmpArry[3]="4 bex"
-	#n = asort(tmpArry, dest)
-	#for ( i=1; i<=n; i++){
-		#print dest[i]
-	#}
-	#print dest[2]
-	
-	for (i in tmpArry){
-		# This sorts the first column
-		#print tmpArry[i] | "sort -n" 
-		# This sorts the second column
-		print tmpArry[i] | "sort -k2" 
-	}
 	
 }
 '

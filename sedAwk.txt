@@ -289,7 +289,21 @@ awk -f a14 a11ex
 This will provide the bytes size for all the files and number of files in each directory.
 ./a15b
 
+# Sort by file size
+srt=s ./a15c
+# Sort by number files
+srt=f ./a15c
+# Sort by directory name
+srt=d ./a15c
+
+] Nice [
+
+cat AWKandSed/a15c | curl -F 'sprunge=<-' http://sprunge.us
+
+
 ] LINKS [
+
+https://stackoverflow.com/questions/19075671/how-do-i-use-shell-variables-in-an-awk-script
 https://unix.stackexchange.com/questions/126011/sorting-by-last-name-in-the-scond-column
 https://stackoverflow.com/questions/9985528/how-can-i-trim-white-space-from-a-variable-in-awk
 https://unix.stackexchange.com/questions/57006/awk-high-precision-arithmetic
